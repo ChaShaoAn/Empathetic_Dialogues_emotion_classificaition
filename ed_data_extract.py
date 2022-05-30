@@ -32,7 +32,7 @@ def data_reader(data_folder, datatype,save=True):
     speaker_info = []
 
     # data = {'utterance_data':[],'emotion_label':[],'emotion':[],'prompt':[], 'utterance_data_combined':[],'utterance_id':[],"speaker_info":[],"speaker_utterance":[]}
-    data = {'utterance_data':[],'emotion_label':[],'emotion':[],'prompt':[], 'utterance_data_combined':[],'utterance_id':[],"speaker_info":[],"speaker_utterance":[], "conv_id":[]}
+    data = {'utterance_data':[],'emotion_label':[],'emotion':[],'prompt':[], 'utterance_data_combined':[],'utterance_id':[],"speaker_info":[],"speaker_utterance":[], "listener_utterance":[], "conv_id":[]}
     df = open(os.path.join(data_folder, f"fixed_{datatype}.csv")).readlines()
 
     for i in range(2,len(df)): # starts with 2 becauase df[0] is the coloumn headers, so i-1 i.e. 2-1=1 will start from the actual data
@@ -72,6 +72,7 @@ def data_reader(data_folder, datatype,save=True):
                 data["speaker_info"].append(speaker_info)
                 data["utterance_data_combined"].append("".join(ongoing_utterance_list))
                 data["speaker_utterance"].append("".join(ongoing_utterance_list[0::2]))
+                data["listener_utterance"].append("".join(ongoing_utterance_list[1::2]))
                 data["conv_id"].append(conv_id)
 
 
@@ -97,6 +98,7 @@ def data_reader(data_folder, datatype,save=True):
             data["speaker_info"].append(speaker_info)
             data["utterance_data_combined"].append("".join(ongoing_utterance_list))
             data["speaker_utterance"].append("".join(ongoing_utterance_list[0::2]))
+            data["listener_utterance"].append("".join(ongoing_utterance_list[1::2]))
             data["conv_id"].append(conv_id)
 
             ongoing_utterance_list = []
@@ -105,10 +107,10 @@ def data_reader(data_folder, datatype,save=True):
 
     if (datatype != 'test'):
         assert len(data["prompt"]) == len(data["emotion"]) == len(data["utterance_data"]) == len(data["utterance_id"]) == len(data["speaker_info"])
-        save_data = {"prompt":data["prompt"],"utterance_data":data["utterance_data_combined"],"speaker_utterance":data["speaker_utterance"],"emotion":data["emotion"],"emotion_label":data["emotion_label"], "speaker_info":data["speaker_info"]}
+        save_data = {"prompt":data["prompt"],"utterance_data":data["utterance_data_combined"],"speaker_utterance":data["speaker_utterance"],"listener_utterance":data["listener_utterance"], "emotion":data["emotion"],"emotion_label":data["emotion_label"], "speaker_info":data["speaker_info"]}
     elif (datatype == 'test'):
         assert len(data["prompt"]) == len(data["utterance_data"]) == len(data["utterance_id"]) == len(data["speaker_info"]) == len(data["conv_id"])
-        save_data = {"conv_id":data["conv_id"], "prompt":data["prompt"],"utterance_data":data["utterance_data_combined"],"speaker_utterance":data["speaker_utterance"], "speaker_info":data["speaker_info"]}
+        save_data = {"conv_id":data["conv_id"], "prompt":data["prompt"],"utterance_data":data["utterance_data_combined"],"speaker_utterance":data["speaker_utterance"],"listener_utterance":data["listener_utterance"], "speaker_info":data["speaker_info"]}
     df = pd.DataFrame(save_data)
     df.to_csv("data/empathetic_dialogues/"+datatype+".csv",index=False)
 

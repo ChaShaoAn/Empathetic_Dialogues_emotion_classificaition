@@ -33,7 +33,7 @@ def data_reader(data_folder, datatype,save=True):
 
     # data = {'utterance_data':[],'emotion_label':[],'emotion':[],'prompt':[], 'utterance_data_combined':[],'utterance_id':[],"speaker_info":[],"speaker_utterance":[]}
     data = {'utterance_data':[],'emotion_label':[],'emotion':[],'prompt':[], 'utterance_data_combined':[],'utterance_id':[],"speaker_info":[],"speaker_utterance":[], "listener_utterance":[], "conv_id":[]}
-    df = open(os.path.join(data_folder, f"fixed_{datatype}.csv")).readlines()
+    df = open(os.path.join(data_folder, f"fixed_{datatype}.csv"), 'r', encoding="utf-8").readlines()
 
     for i in range(2,len(df)): # starts with 2 becauase df[0] is the coloumn headers, so i-1 i.e. 2-1=1 will start from the actual data
 

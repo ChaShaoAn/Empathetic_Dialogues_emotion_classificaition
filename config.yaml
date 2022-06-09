@@ -1,0 +1,22 @@
+# - output_folder: submission.csv存放的地方
+# - random_seed: 隨機種子，但最後沒有用到...
+# - pretrain_model_name: 從huggingface載入哪個pretrain model
+# - epoch: train的epoch數
+# - batch_size: GPU同時訓練的batch size，視GPU能力設定
+# - label_num: 32種情緒
+# - train_file_path: 前處理過的csv，應該設定為"data/empathetic_dialogues/train.csv"，除非有手動換地方
+# - valid_file_path: 前處理過的csv，應該設定為"data/empathetic_dialogues/valid.csv"，除非有手動換地方
+# - test_file_path: 前處理過的csv，應該設定為"data/empathetic_dialogues/test.csv"，除非有手動換地方
+# - original_test_file_path: 未處理過的fixed_test.csv，應該設定為"data/fixed_test.csv"，除非有手動換地方
+# - model_path: 存放最終的best model的資料夾
+output_folder: "output"
+random_seed: 777 # not-use
+pretrain_model_name: "roberta-base"
+epoch: 10
+batch_size: 32
+label_num: 32
+train_file_path: "data/empathetic_dialogues/train.csv"
+valid_file_path: "data/empathetic_dialogues/valid.csv"
+test_file_path: "data/empathetic_dialogues/test.csv"
+original_test_file_path: "data/fixed_test.csv"
+model_path: "best_model"

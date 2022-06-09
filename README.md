@@ -7,8 +7,8 @@ Follow below steps to re-present submission:
     ```
     pip install -r requirements.txt
     ```  
-2. Download the [trained model](https://drive.google.com/drive/folders/1OrUys926809LzPYX3ulLLAmNj07Dezgr?usp=sharing) !  
-3. place config.json and pytorch_model.bin to `best_model` folder.  
+2. Download the [trained model and model's config](https://drive.google.com/drive/folders/1OrUys926809LzPYX3ulLLAmNj07Dezgr?usp=sharing) !  
+3. place `config.json` and `pytorch_model.bin` to `best_model` folder.  
 (or you can name this folder by yourself, but you need to modify `model_path` in [config.yaml](config.yaml) )
 4. place `fixed_train.csv`, `fixed_valid.csv` and `fixed_test.csv` in `data` folder. (Don't change file name!!!)  
 5. run [ed_data_extract.py](ed_data_extract.py) to pre-process csv file.  

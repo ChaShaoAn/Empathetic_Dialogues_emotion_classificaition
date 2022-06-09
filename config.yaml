@@ -1,6 +1,6 @@
 # - output_folder: submission.csv存放的地方
 # - random_seed: 隨機種子，但最後沒有用到...
-# - pretrain_model_name: 從huggingface載入哪個pretrain model
+# - pretrain_model_name: 使用roberta-base，是從huggingface載入的pretrain model
 # - epoch: train的epoch數
 # - batch_size: GPU同時訓練的batch size，視GPU能力設定
 # - label_num: 32種情緒
